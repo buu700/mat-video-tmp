@@ -94,7 +94,7 @@ A slightly more customized example, in your HTML file:
 ## API
 Attribute | Type | Description | Default
 --- | --- | --- | ---
-*src* | **string** | Path or URL to a video | *null*
+*src* | **string|MediaStream|MediaSource|Blob** | Path, URL, or `srcObject` for a video | *null*
 *title* | **string** | Title for the video | *null*
 *autoplay* | **boolean** | Whether the video should autoplay | *false*
 *preload* | **boolean** | Whether the video should preload | *true*
@@ -104,6 +104,7 @@ Attribute | Type | Description | Default
 *quality* | **boolean** | Whether the video will have a quality indicator | *true*
 *download* | **boolean** | Whether the video will have a download option | *false*
 *fullscreen* | **boolean** | Whether the video will have a fullscreen option | *true*
+*playsinline* | **boolean** | Whether the video should play inline | *false*
 *showFrameByFrame* | **boolean** | Whether the video will display frame-by-frame controls | *false*
 *keyboard* | **boolean** | Whether the player will have keyboard shortcuts | *true*
 *overlay* | **boolean** | Force the overlay/controls to be shown or hidden | *null*
