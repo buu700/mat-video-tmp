@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { FullscreenService } from '../../services/fullscreen.service';
@@ -43,22 +43,22 @@ var MatFullscreenButtonComponent = /** @class */ (function () {
         { type: FullscreenService },
         { type: EventService }
     ]; };
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatFullscreenButtonComponent.prototype, "player", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatFullscreenButtonComponent.prototype, "fullscreen", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Output()
     ], MatFullscreenButtonComponent.prototype, "fullscreenChanged", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatFullscreenButtonComponent.prototype, "keyboard", void 0);
-    __decorate([
+    tslib_1.__decorate([
         HostListener('document:keyup.f', ['$event'])
     ], MatFullscreenButtonComponent.prototype, "onFullscreenKey", null);
-    MatFullscreenButtonComponent = __decorate([
+    MatFullscreenButtonComponent = tslib_1.__decorate([
         Component({
             selector: 'mat-fullscreen-button',
             template: "<button mat-icon-button [disabled]=\"!canFullscreen\" (click)=\"toggleFullscreen()\">\n  <mat-icon *ngIf=\"!fullscreen\">fullscreen</mat-icon>\n  <mat-icon *ngIf=\"fullscreen\">fullscreen_exit</mat-icon>\n</button>",

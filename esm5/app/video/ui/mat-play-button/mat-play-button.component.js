@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnDestroy, Output, Renderer2 } from '@angular/core';
 import { EventService } from '../../services/event.service';
 var MatPlayButtonComponent = /** @class */ (function () {
@@ -45,22 +45,22 @@ var MatPlayButtonComponent = /** @class */ (function () {
         { type: Renderer2 },
         { type: EventService }
     ]; };
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatPlayButtonComponent.prototype, "video", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatPlayButtonComponent.prototype, "play", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Output()
     ], MatPlayButtonComponent.prototype, "playChanged", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatPlayButtonComponent.prototype, "keyboard", void 0);
-    __decorate([
+    tslib_1.__decorate([
         HostListener('document:keyup.space', ['$event'])
     ], MatPlayButtonComponent.prototype, "onPlayKey", null);
-    MatPlayButtonComponent = __decorate([
+    MatPlayButtonComponent = tslib_1.__decorate([
         Component({
             selector: 'mat-play-button',
             template: "<button mat-icon-button (click)=\"toggleVideoPlayback()\">\n  <mat-icon *ngIf=\"!play\">play_arrow</mat-icon>\n  <mat-icon *ngIf=\"play\">pause</mat-icon>\n</button>",

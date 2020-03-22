@@ -1,12 +1,12 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { Component, Input } from '@angular/core';
 let MatQualityControlComponent = class MatQualityControlComponent {
     constructor() { }
 };
-__decorate([
+tslib_1.__decorate([
     Input()
 ], MatQualityControlComponent.prototype, "video", void 0);
-MatQualityControlComponent = __decorate([
+MatQualityControlComponent = tslib_1.__decorate([
     Component({
         selector: 'mat-quality-control',
         template: "<div *ngIf=\"video && video.videoHeight\" class=\"quality\">\n  {{ video.videoHeight }}p\n</div>",
