@@ -883,7 +883,9 @@ let MatVolumeControlComponent = class MatVolumeControlComponent {
     get muted() { return this._muted; }
     set muted(v) {
         this._muted = v;
-        this.video.muted = this._muted;
+        if (this.video) {
+            this.video.muted = this._muted;
+        }
     }
     setVolume(value) {
         this.volume = value;
@@ -901,7 +903,9 @@ let MatVolumeControlComponent = class MatVolumeControlComponent {
         this.updateMuted();
     }
     updateMuted() {
-        this.video.muted = this.muted;
+        if (this.video) {
+            this.video.muted = this.muted;
+        }
         this.mutedChanged.emit(this.muted);
     }
     onMuteKey(event) {

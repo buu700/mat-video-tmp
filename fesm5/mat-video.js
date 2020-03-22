@@ -953,7 +953,9 @@ var MatVolumeControlComponent = /** @class */ (function () {
         get: function () { return this._muted; },
         set: function (v) {
             this._muted = v;
-            this.video.muted = this._muted;
+            if (this.video) {
+                this.video.muted = this._muted;
+            }
         },
         enumerable: true,
         configurable: true
@@ -974,7 +976,9 @@ var MatVolumeControlComponent = /** @class */ (function () {
         this.updateMuted();
     };
     MatVolumeControlComponent.prototype.updateMuted = function () {
-        this.video.muted = this.muted;
+        if (this.video) {
+            this.video.muted = this.muted;
+        }
         this.mutedChanged.emit(this.muted);
     };
     MatVolumeControlComponent.prototype.onMuteKey = function (event) {
