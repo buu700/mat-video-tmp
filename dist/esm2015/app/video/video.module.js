@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +22,7 @@ import { MatVolumeControlComponent } from './ui/mat-volume-control/mat-volume-co
 import { MatVideoComponent } from './video.component';
 let MatVideoModule = class MatVideoModule {
 };
-MatVideoModule = tslib_1.__decorate([
+MatVideoModule = __decorate([
     NgModule({
         declarations: [
             SecondsToTimePipe,

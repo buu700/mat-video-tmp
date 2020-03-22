@@ -6,13 +6,14 @@ export declare class MatSliderProgressBarComponent extends MatSlider {
     mode: string;
     value: number;
     /** Buffer value of the progress bar. Defaults to zero. */
-    bufferValue: number;
+    get bufferValue(): number;
+    set bufferValue(v: number);
     private _bufferValue;
     /** The id of the progress bar. */
     sliderprogressbarId: string;
     constructor(elementRef: ElementRef, focusMonitor: FocusMonitor, changeDetectorRef: ChangeDetectorRef, dir: Directionality, tabIndex: string);
     /** CSS styles for the track fill element. */
-    readonly _trackBufferStyles: {
+    get _trackBufferStyles(): {
         [key: string]: string;
     };
 }

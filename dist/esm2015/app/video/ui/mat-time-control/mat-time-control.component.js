@@ -1,12 +1,12 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Component, Input } from '@angular/core';
 let MatTimeControlComponent = class MatTimeControlComponent {
     constructor() { }
 };
-tslib_1.__decorate([
+__decorate([
     Input()
 ], MatTimeControlComponent.prototype, "video", void 0);
-MatTimeControlComponent = tslib_1.__decorate([
+MatTimeControlComponent = __decorate([
     Component({
         selector: 'mat-time-control',
         template: "<div class=\"playtime\">\n  {{ video?.currentTime | secondsToTime }} / {{ video?.duration | secondsToTime}}\n</div>",

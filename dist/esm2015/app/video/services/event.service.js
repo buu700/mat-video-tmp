@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Injectable } from '@angular/core';
 let EventService = class EventService {
     constructor() { }
@@ -12,7 +12,7 @@ let EventService = class EventService {
                 event.dispose();
     }
 };
-EventService = tslib_1.__decorate([
+EventService = __decorate([
     Injectable()
 ], EventService);
 export { EventService };

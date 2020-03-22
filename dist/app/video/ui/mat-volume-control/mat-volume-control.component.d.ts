@@ -8,7 +8,8 @@ export declare class MatVolumeControlComponent {
     volume: number;
     volumeChanged: EventEmitter<number>;
     private _muted;
-    muted: boolean;
+    get muted(): boolean;
+    set muted(v: boolean);
     mutedChanged: EventEmitter<boolean>;
     keyboard: boolean;
     constructor(evt: EventService);

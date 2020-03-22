@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Injectable } from '@angular/core';
 var FullscreenService = /** @class */ (function () {
     function FullscreenService() {
@@ -104,7 +104,7 @@ var FullscreenService = /** @class */ (function () {
     FullscreenService.prototype.getElement = function () {
         return document[this.fn.fullscreenElement];
     };
-    FullscreenService = tslib_1.__decorate([
+    FullscreenService = __decorate([
         Injectable()
     ], FullscreenService);
     return FullscreenService;

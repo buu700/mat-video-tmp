@@ -1,15 +1,15 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Component, Input } from '@angular/core';
 var MatDownloadButtonComponent = /** @class */ (function () {
     function MatDownloadButtonComponent() {
     }
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatDownloadButtonComponent.prototype, "video", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatDownloadButtonComponent.prototype, "title", void 0);
-    MatDownloadButtonComponent = tslib_1.__decorate([
+    MatDownloadButtonComponent = __decorate([
         Component({
             selector: 'mat-download-button',
             template: "<a mat-icon-button [href]=\"video?.currentSrc\" [download]=\"title\">\n  <mat-icon>file_download</mat-icon>\n</a>",

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, ViewChild, } from '@angular/core';
 import { EventService } from './services/event.service';
 var MatVideoComponent = /** @class */ (function () {
@@ -138,73 +138,73 @@ var MatVideoComponent = /** @class */ (function () {
         { type: Renderer2 },
         { type: EventService }
     ]; };
-    tslib_1.__decorate([
+    __decorate([
         ViewChild('player')
     ], MatVideoComponent.prototype, "player", void 0);
-    tslib_1.__decorate([
+    __decorate([
         ViewChild('video')
     ], MatVideoComponent.prototype, "video", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "src", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "title", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "autoplay", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "preload", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "loop", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "quality", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "fullscreen", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "playsinline", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "showFrameByFrame", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "fps", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "download", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "color", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "spinner", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "poster", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "keyboard", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "overlay", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "muted", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], MatVideoComponent.prototype, "mutedChange", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVideoComponent.prototype, "time", null);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], MatVideoComponent.prototype, "timeChange", void 0);
-    MatVideoComponent = tslib_1.__decorate([
+    MatVideoComponent = __decorate([
         Component({
             selector: 'mat-video',
             template: "<div #player class=\"videoplayer\" [ngClass]=\"getOverlayClass('show-mouse', 'hide-mouse')\">\n    <div class=\"header\" *ngIf=\"title\" [ngClass]=\"getOverlayClass('visible', 'hidden')\">\n        {{title}}\n    </div>\n\n    <video #video class=\"video\" [attr.autoplay]=\"autoplay ? true : null\"\n        [preload]=\"preload ? 'auto' : 'metadata'\" [attr.poster]=\"poster ? poster : null\"\n        [attr.loop]=\"loop ? loop : null\" [attr.playsinline]=\"playsinline ? true : null\">\n        <ng-content select=\"source\"></ng-content>\n        <ng-content select=\"track\"></ng-content>\n        This browser does not support HTML5 video.\n    </video>\n\n    <div class=\"controls\" *ngIf=\"videoLoaded\" [ngClass]=\"getOverlayClass('visible', 'hidden')\">\n        <div class=\"progress\">\n            <mat-seek-progress-control [color]=\"color\" [video]=\"video\"></mat-seek-progress-control>\n        </div>\n\n        <div class=\"menu\">\n            <div class=\"left\">\n                <mat-play-button (playChanged)=\"playing = $event\" [video]=\"video\" [keyboard]=\"keyboard\">\n                </mat-play-button>\n\n                <mat-frame-by-frame-control *ngIf=\"showFrameByFrame\" [video]=\"video\" [fps]=\"fps\"></mat-frame-by-frame-control>\n\n                <mat-volume-control [muted]=\"muted\" (mutedChanged)=\"muted = $event; mutedChange.emit(muted);\"\n                    [color]=\"color\" [video]=\"video\" [keyboard]=\"keyboard\">\n                </mat-volume-control>\n\n                <mat-time-control [video]=\"video\"></mat-time-control>\n            </div>\n\n            <div class=\"right\">\n                <mat-quality-control *ngIf=\"quality\" [video]=\"video\"></mat-quality-control>\n\n                <mat-download-button *ngIf=\"download\" [title]=\"title\" [video]=\"video\"></mat-download-button>\n\n                <mat-fullscreen-button *ngIf=\"fullscreen\" (fullscreenChanged)=\"isFullscreen = $event\" [player]=\"player\"\n                    [keyboard]=\"keyboard\"></mat-fullscreen-button>\n            </div>\n        </div>\n    </div>\n\n    <mat-video-spinner [spinner]=\"spinner\" [video]=\"video\"></mat-video-spinner>\n</div>\n",

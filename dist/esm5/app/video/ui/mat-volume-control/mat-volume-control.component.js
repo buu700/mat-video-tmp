@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { EventService } from '../../services/event.service';
 var MatVolumeControlComponent = /** @class */ (function () {
@@ -49,31 +49,31 @@ var MatVolumeControlComponent = /** @class */ (function () {
     MatVolumeControlComponent.ctorParameters = function () { return [
         { type: EventService }
     ]; };
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVolumeControlComponent.prototype, "video", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVolumeControlComponent.prototype, "color", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVolumeControlComponent.prototype, "volume", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], MatVolumeControlComponent.prototype, "volumeChanged", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVolumeControlComponent.prototype, "muted", null);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], MatVolumeControlComponent.prototype, "mutedChanged", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], MatVolumeControlComponent.prototype, "keyboard", void 0);
-    tslib_1.__decorate([
+    __decorate([
         HostListener('document:keyup.m', ['$event'])
     ], MatVolumeControlComponent.prototype, "onMuteKey", null);
-    MatVolumeControlComponent = tslib_1.__decorate([
+    MatVolumeControlComponent = __decorate([
         Component({
             selector: 'mat-volume-control',
             template: "<div class=\"volume-control\">\n  <button mat-icon-button (click)=\"toggleMuted()\">\n    <mat-icon *ngIf=\"muted || volume === 0\">volume_off</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume > 0 && volume < 0.25\">volume_mute</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.25 && volume < 0.5\">volume_down</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.5\">volume_up</mat-icon>\n  </button>\n  <mat-slider class=\"volume-slider\" [color]=\"color\" min=\"0\" max=\"1\" step=\"0.01\" value=\"1\" (input)=\"setVolume($event.value)\">\n  </mat-slider>\n</div>",
