@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { Component, Input } from '@angular/core';
 var MatFrameByFrameControlComponent = /** @class */ (function () {
     function MatFrameByFrameControlComponent() {
@@ -14,13 +14,13 @@ var MatFrameByFrameControlComponent = /** @class */ (function () {
         var newPos = ((currentFrames + nbFrames) / this.fps) + 0.00001;
         this.video.currentTime = newPos;
     };
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatFrameByFrameControlComponent.prototype, "video", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatFrameByFrameControlComponent.prototype, "fps", void 0);
-    MatFrameByFrameControlComponent = __decorate([
+    MatFrameByFrameControlComponent = tslib_1.__decorate([
         Component({
             selector: 'mat-frame-by-frame-control',
             template: "<button mat-icon-button (click)=\"seekFrames(-5)\">\n    <mat-icon>skip_previous</mat-icon>\n</button>\n\n<button mat-icon-button (click)=\"seekFrames(-1)\">\n    <mat-icon>arrow_left</mat-icon>\n</button>\n\n<button mat-icon-button (click)=\"seekFrames(1)\">\n    <mat-icon>arrow_right</mat-icon>\n</button>\n\n<button mat-icon-button (click)=\"seekFrames(5)\">\n    <mat-icon>skip_next</mat-icon>\n</button>",

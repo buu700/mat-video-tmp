@@ -24,9 +24,8 @@ export declare class MatVideoComponent implements AfterViewInit, OnChanges, OnDe
     overlay: boolean;
     muted: boolean;
     mutedChange: EventEmitter<boolean>;
-    get time(): number;
+    time: number;
     timeChange: EventEmitter<number>;
-    set time(val: number);
     playing: boolean;
     isFullscreen: boolean;
     videoWidth: number;

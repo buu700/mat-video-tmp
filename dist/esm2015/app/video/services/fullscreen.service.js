@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { Injectable } from '@angular/core';
 let FullscreenService = class FullscreenService {
     constructor() {
@@ -105,7 +105,7 @@ let FullscreenService = class FullscreenService {
         return document[this.fn.fullscreenElement];
     }
 };
-FullscreenService = __decorate([
+FullscreenService = tslib_1.__decorate([
     Injectable()
 ], FullscreenService);
 export { FullscreenService };

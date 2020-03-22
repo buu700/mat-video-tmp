@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, Renderer2 } from '@angular/core';
 import { EventService } from '../../services/event.service';
 var MatSeekProgressControlComponent = /** @class */ (function () {
@@ -58,25 +58,25 @@ var MatSeekProgressControlComponent = /** @class */ (function () {
         { type: Renderer2 },
         { type: EventService }
     ]; };
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatSeekProgressControlComponent.prototype, "video", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatSeekProgressControlComponent.prototype, "color", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatSeekProgressControlComponent.prototype, "currentTime", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Output()
     ], MatSeekProgressControlComponent.prototype, "currentTimeChanged", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatSeekProgressControlComponent.prototype, "bufferedTime", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Output()
     ], MatSeekProgressControlComponent.prototype, "bufferedTimeChanged", void 0);
-    MatSeekProgressControlComponent = __decorate([
+    MatSeekProgressControlComponent = tslib_1.__decorate([
         Component({
             selector: 'mat-seek-progress-control',
             template: "<mat-slider-progress-bar [color]=\"color\" mode=\"buffer\" step=\"0.01\" [value]=\"curTimePercent\" [bufferValue]=\"bufTimePercent\"\n  (input)=\"seekVideo($event.value)\"></mat-slider-progress-bar>",

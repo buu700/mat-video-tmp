@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import * as tslib_1 from "tslib";
 import { AfterViewInit, Component, Input, OnDestroy, Renderer2 } from '@angular/core';
 import { EventService } from '../../services/event.service';
 var MatVideoSpinnerComponent = /** @class */ (function () {
@@ -30,13 +30,13 @@ var MatVideoSpinnerComponent = /** @class */ (function () {
         { type: Renderer2 },
         { type: EventService }
     ]; };
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatVideoSpinnerComponent.prototype, "video", void 0);
-    __decorate([
+    tslib_1.__decorate([
         Input()
     ], MatVideoSpinnerComponent.prototype, "spinner", void 0);
-    MatVideoSpinnerComponent = __decorate([
+    MatVideoSpinnerComponent = tslib_1.__decorate([
         Component({
             selector: 'mat-video-spinner',
             template: "<div *ngIf=\"!videoLoaded || videoBuffering\" [class]=\"spinner\"></div>",
