@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "packagr": "npx ng-packagr -p ng-package.json"
+    "package": "rm -rf dist 2> /dev/null ; npx ngc -p tsconfig.es5.json ; mv dist/mat-video.js dist/mat-video.es5.js ; mv dist/mat-video.js.map dist/mat-video.es5.js.map ; rm dist/mat-video.d.ts dist/mat-video.metadata.json ; npx ngc -p ."
   },
   "private": false,
   "repository": {

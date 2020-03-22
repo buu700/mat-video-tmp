@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"module": "commonjs"
+	},
+	"angularCompilerOptions": {
+		"enableIvy": false,
+		"skipTemplateCodegen": true
+	}
+}
