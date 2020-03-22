@@ -9,6 +9,7 @@ export declare class MatVideoComponent implements AfterViewInit, OnDestroy {
     src: string;
     title: string;
     autoplay: boolean;
+    playsinline: boolean;
     preload: boolean;
     loop: boolean;
     quality: boolean;
