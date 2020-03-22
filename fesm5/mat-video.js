@@ -163,21 +163,20 @@ var MatVideoComponent = /** @class */ (function () {
         }
     };
     MatVideoComponent.prototype.setVideoSrc = function (src) {
-        if (!this.video || !this.video.nativeElement) {
-            return;
-        }
-        this.video.nativeElement.src = null;
-        if ('srcObject' in HTMLVideoElement.prototype) {
-            this.video.nativeElement.srcObject = null;
-        }
         if (this.srcObjectURL) {
             URL.revokeObjectURL(this.srcObjectURL);
             this.srcObjectURL = null;
         }
-        if (!src) {
+        if (!this.video || !this.video.nativeElement) {
             return;
         }
-        if (typeof src === 'string') {
+        if (!src) {
+            this.video.nativeElement.src = null;
+            if ('srcObject' in HTMLVideoElement.prototype) {
+                this.video.nativeElement.srcObject = new MediaStream();
+            }
+        }
+        else if (typeof src === 'string') {
             this.video.nativeElement.src = src;
         }
         else if ('srcObject' in HTMLVideoElement.prototype) {
