@@ -127,6 +127,9 @@ let MatVideoComponent = class MatVideoComponent {
         }
     }
     setVideoSrc(src) {
+        if (!this.video || !this.video.nativeElement) {
+            return;
+        }
         this.video.nativeElement.src = null;
         if ('srcObject' in HTMLVideoElement.prototype) {
             this.video.nativeElement.srcObject = null;
