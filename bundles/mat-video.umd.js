@@ -1156,21 +1156,18 @@
             this.color = 'primary';
             this.volume = 1;
             this.volumeChanged = new core.EventEmitter();
-            this._muted = false;
+            this.muted = false;
             this.mutedChanged = new core.EventEmitter();
             this.keyboard = true;
         }
-        Object.defineProperty(MatVolumeControlComponent.prototype, "muted", {
-            get: function () { return this._muted; },
-            set: function (v) {
-                this._muted = v;
-                if (this.video) {
-                    this.video.muted = this._muted;
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
+        MatVolumeControlComponent.prototype.ngAfterViewInit = function () {
+            this.updateMuted(false);
+        };
+        MatVolumeControlComponent.prototype.ngOnChanges = function (changes) {
+            if (changes.muted) {
+                this.updateMuted(false);
+            }
+        };
         MatVolumeControlComponent.prototype.setVolume = function (value) {
             this.volume = value;
             this.video.volume = this.volume;
@@ -1186,11 +1183,14 @@
             this.muted = !this.muted;
             this.updateMuted();
         };
-        MatVolumeControlComponent.prototype.updateMuted = function () {
+        MatVolumeControlComponent.prototype.updateMuted = function (emitChange) {
+            if (emitChange === void 0) { emitChange = true; }
             if (this.video) {
                 this.video.muted = this.muted;
             }
-            this.mutedChanged.emit(this.muted);
+            if (emitChange) {
+                this.mutedChanged.emit(this.muted);
+            }
         };
         MatVolumeControlComponent.prototype.onMuteKey = function (event) {
             if (this.keyboard) {
@@ -1215,7 +1215,7 @@
         ], MatVolumeControlComponent.prototype, "volumeChanged", void 0);
         __decorate([
             core.Input()
-        ], MatVolumeControlComponent.prototype, "muted", null);
+        ], MatVolumeControlComponent.prototype, "muted", void 0);
         __decorate([
             core.Output()
         ], MatVolumeControlComponent.prototype, "mutedChanged", void 0);

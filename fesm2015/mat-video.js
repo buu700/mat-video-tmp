@@ -876,15 +876,16 @@ let MatVolumeControlComponent = class MatVolumeControlComponent {
         this.color = 'primary';
         this.volume = 1;
         this.volumeChanged = new EventEmitter();
-        this._muted = false;
+        this.muted = false;
         this.mutedChanged = new EventEmitter();
         this.keyboard = true;
     }
-    get muted() { return this._muted; }
-    set muted(v) {
-        this._muted = v;
-        if (this.video) {
-            this.video.muted = this._muted;
+    ngAfterViewInit() {
+        this.updateMuted(false);
+    }
+    ngOnChanges(changes) {
+        if (changes.muted) {
+            this.updateMuted(false);
         }
     }
     setVolume(value) {
@@ -902,11 +903,13 @@ let MatVolumeControlComponent = class MatVolumeControlComponent {
         this.muted = !this.muted;
         this.updateMuted();
     }
-    updateMuted() {
+    updateMuted(emitChange = true) {
         if (this.video) {
             this.video.muted = this.muted;
         }
-        this.mutedChanged.emit(this.muted);
+        if (emitChange) {
+            this.mutedChanged.emit(this.muted);
+        }
     }
     onMuteKey(event) {
         if (this.keyboard) {
@@ -932,7 +935,7 @@ __decorate([
 ], MatVolumeControlComponent.prototype, "volumeChanged", void 0);
 __decorate([
     Input()
-], MatVolumeControlComponent.prototype, "muted", null);
+], MatVolumeControlComponent.prototype, "muted", void 0);
 __decorate([
     Output()
 ], MatVolumeControlComponent.prototype, "mutedChanged", void 0);
