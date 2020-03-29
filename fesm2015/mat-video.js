@@ -1,6 +1,6 @@
 import { __decorate, __param } from 'tslib';
 import { CommonModule } from '@angular/common';
-import { Injectable, EventEmitter, Renderer2, ViewChild, Input, Output, Component, Host, ElementRef, Directive, ChangeDetectorRef, Optional, Attribute, ChangeDetectionStrategy, Pipe, HostListener, NgModule } from '@angular/core';
+import { Injectable, EventEmitter, Input, Output, HostListener, Component, Renderer2, ViewChild, Host, ElementRef, Directive, ChangeDetectorRef, Optional, Attribute, ChangeDetectionStrategy, Pipe, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlider, MAT_SLIDER_VALUE_ACCESSOR, MatSliderModule } from '@angular/material/slider';
@@ -22,6 +22,90 @@ let EventService = class EventService {
 EventService = __decorate([
     Injectable()
 ], EventService);
+
+let MatVolumeControlComponent = class MatVolumeControlComponent {
+    constructor(evt) {
+        this.evt = evt;
+        this.video = null;
+        this.color = 'primary';
+        this.volume = 1;
+        this.volumeChanged = new EventEmitter();
+        this.muted = false;
+        this.mutedChanged = new EventEmitter();
+        this.keyboard = true;
+    }
+    ngAfterViewInit() {
+        this.updateMuted(false);
+    }
+    ngOnChanges(changes) {
+        if (changes.muted) {
+            this.updateMuted(false);
+        }
+    }
+    setVolume(value) {
+        this.volume = value;
+        this.video.volume = this.volume;
+        this.volumeChanged.emit(this.volume);
+        if (this.volume > 0)
+            this.setMuted(false);
+    }
+    setMuted(value) {
+        if (this.muted !== value)
+            this.toggleMuted();
+    }
+    toggleMuted() {
+        this.muted = !this.muted;
+        this.updateMuted();
+    }
+    updateMuted(emitChange = true) {
+        if (this.video) {
+            this.video.muted = this.muted;
+        }
+        if (emitChange) {
+            this.mutedChanged.emit(this.muted);
+        }
+    }
+    onMuteKey(event) {
+        if (this.keyboard) {
+            this.toggleMuted();
+            event.preventDefault();
+        }
+    }
+};
+MatVolumeControlComponent.ctorParameters = () => [
+    { type: EventService }
+];
+__decorate([
+    Input()
+], MatVolumeControlComponent.prototype, "video", void 0);
+__decorate([
+    Input()
+], MatVolumeControlComponent.prototype, "color", void 0);
+__decorate([
+    Input()
+], MatVolumeControlComponent.prototype, "volume", void 0);
+__decorate([
+    Output()
+], MatVolumeControlComponent.prototype, "volumeChanged", void 0);
+__decorate([
+    Input()
+], MatVolumeControlComponent.prototype, "muted", void 0);
+__decorate([
+    Output()
+], MatVolumeControlComponent.prototype, "mutedChanged", void 0);
+__decorate([
+    Input()
+], MatVolumeControlComponent.prototype, "keyboard", void 0);
+__decorate([
+    HostListener('document:keyup.m', ['$event'])
+], MatVolumeControlComponent.prototype, "onMuteKey", null);
+MatVolumeControlComponent = __decorate([
+    Component({
+        selector: 'mat-volume-control',
+        template: "<div class=\"volume-control\">\n  <button mat-icon-button (click)=\"toggleMuted()\">\n    <mat-icon *ngIf=\"muted || volume === 0\">volume_off</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume > 0 && volume < 0.25\">volume_mute</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.25 && volume < 0.5\">volume_down</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.5\">volume_up</mat-icon>\n  </button>\n  <mat-slider class=\"volume-slider\" [color]=\"color\" min=\"0\" max=\"1\" step=\"0.01\" value=\"1\" (input)=\"setVolume($event.value)\">\n  </mat-slider>\n</div>",
+        styles: [".volume-control{display:inline}.volume-slider{margin-left:-15px}::ng-deep.mat-slider-thumb{border-color:transparent!important}::ng-deep.mat-slider-track-background{background-color:#d3d3d3!important;transform:translateX(0)!important}.volume-control .volume-slider{visibility:hidden;opacity:0;min-width:0;width:0;transition:visibility .2s,opacity .2s linear,width .2s linear}.volume-control:hover .volume-slider{visibility:visible;opacity:1;min-width:90px;width:90px;transition:opacity .2s linear,width .2s linear,min-width .2s linear}"]
+    })
+], MatVolumeControlComponent);
 
 let MatVideoComponent = class MatVideoComponent {
     constructor(renderer, evt) {
@@ -150,6 +234,9 @@ let MatVideoComponent = class MatVideoComponent {
             this.srcObjectURL = URL.createObjectURL(src);
             this.video.nativeElement.src = this.srcObjectURL;
         }
+        if (this.volumeControl) {
+            this.volumeControl.updateMuted(false);
+        }
     }
 };
 MatVideoComponent.ctorParameters = () => [
@@ -162,6 +249,9 @@ __decorate([
 __decorate([
     ViewChild('video')
 ], MatVideoComponent.prototype, "video", void 0);
+__decorate([
+    ViewChild(MatVolumeControlComponent)
+], MatVideoComponent.prototype, "volumeControl", void 0);
 __decorate([
     Input()
 ], MatVideoComponent.prototype, "src", void 0);
@@ -869,90 +959,6 @@ MatVideoSpinnerComponent = __decorate([
     })
 ], MatVideoSpinnerComponent);
 
-let MatVolumeControlComponent = class MatVolumeControlComponent {
-    constructor(evt) {
-        this.evt = evt;
-        this.video = null;
-        this.color = 'primary';
-        this.volume = 1;
-        this.volumeChanged = new EventEmitter();
-        this.muted = false;
-        this.mutedChanged = new EventEmitter();
-        this.keyboard = true;
-    }
-    ngAfterViewInit() {
-        this.updateMuted(false);
-    }
-    ngOnChanges(changes) {
-        if (changes.muted) {
-            this.updateMuted(false);
-        }
-    }
-    setVolume(value) {
-        this.volume = value;
-        this.video.volume = this.volume;
-        this.volumeChanged.emit(this.volume);
-        if (this.volume > 0)
-            this.setMuted(false);
-    }
-    setMuted(value) {
-        if (this.muted !== value)
-            this.toggleMuted();
-    }
-    toggleMuted() {
-        this.muted = !this.muted;
-        this.updateMuted();
-    }
-    updateMuted(emitChange = true) {
-        if (this.video) {
-            this.video.muted = this.muted;
-        }
-        if (emitChange) {
-            this.mutedChanged.emit(this.muted);
-        }
-    }
-    onMuteKey(event) {
-        if (this.keyboard) {
-            this.toggleMuted();
-            event.preventDefault();
-        }
-    }
-};
-MatVolumeControlComponent.ctorParameters = () => [
-    { type: EventService }
-];
-__decorate([
-    Input()
-], MatVolumeControlComponent.prototype, "video", void 0);
-__decorate([
-    Input()
-], MatVolumeControlComponent.prototype, "color", void 0);
-__decorate([
-    Input()
-], MatVolumeControlComponent.prototype, "volume", void 0);
-__decorate([
-    Output()
-], MatVolumeControlComponent.prototype, "volumeChanged", void 0);
-__decorate([
-    Input()
-], MatVolumeControlComponent.prototype, "muted", void 0);
-__decorate([
-    Output()
-], MatVolumeControlComponent.prototype, "mutedChanged", void 0);
-__decorate([
-    Input()
-], MatVolumeControlComponent.prototype, "keyboard", void 0);
-__decorate([
-    HostListener('document:keyup.m', ['$event'])
-], MatVolumeControlComponent.prototype, "onMuteKey", null);
-MatVolumeControlComponent = __decorate([
-    Component({
-        selector: 'mat-volume-control',
-        template: "<div class=\"volume-control\">\n  <button mat-icon-button (click)=\"toggleMuted()\">\n    <mat-icon *ngIf=\"muted || volume === 0\">volume_off</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume > 0 && volume < 0.25\">volume_mute</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.25 && volume < 0.5\">volume_down</mat-icon>\n    <mat-icon *ngIf=\"!muted && volume >= 0.5\">volume_up</mat-icon>\n  </button>\n  <mat-slider class=\"volume-slider\" [color]=\"color\" min=\"0\" max=\"1\" step=\"0.01\" value=\"1\" (input)=\"setVolume($event.value)\">\n  </mat-slider>\n</div>",
-        styles: [".volume-control{display:inline}.volume-slider{margin-left:-15px}::ng-deep.mat-slider-thumb{border-color:transparent!important}::ng-deep.mat-slider-track-background{background-color:#d3d3d3!important;transform:translateX(0)!important}.volume-control .volume-slider{visibility:hidden;opacity:0;min-width:0;width:0;transition:visibility .2s,opacity .2s linear,width .2s linear}.volume-control:hover .volume-slider{visibility:visible;opacity:1;min-width:90px;width:90px;transition:opacity .2s linear,width .2s linear,min-width .2s linear}"]
-    })
-], MatVolumeControlComponent);
-
 let MatVideoModule = class MatVideoModule {
 };
 MatVideoModule = __decorate([
@@ -995,5 +1001,5 @@ MatVideoModule = __decorate([
  * Generated bundle index. Do not edit.
  */
 
-export { MatVideoModule, SecondsToTimePipe as ɵa, MatVideoComponent as ɵb, EventService as ɵc, MatSliderProgressBarComponent as ɵd, MatPlayButtonComponent as ɵe, MatVolumeControlComponent as ɵf, MatDownloadButtonComponent as ɵg, MatFullscreenButtonComponent as ɵh, FullscreenService as ɵi, MatTimeControlComponent as ɵj, MatQualityControlComponent as ɵk, MatVideoSpinnerComponent as ɵl, MatSeekProgressControlComponent as ɵm, MatVideoSourceDirective as ɵn, MatVideoTrackDirective as ɵo, MatFrameByFrameControlComponent as ɵp };
+export { MatVideoModule, SecondsToTimePipe as ɵa, MatVideoComponent as ɵb, MatVolumeControlComponent as ɵc, EventService as ɵd, MatSliderProgressBarComponent as ɵe, MatPlayButtonComponent as ɵf, MatDownloadButtonComponent as ɵg, MatFullscreenButtonComponent as ɵh, FullscreenService as ɵi, MatTimeControlComponent as ɵj, MatQualityControlComponent as ɵk, MatVideoSpinnerComponent as ɵl, MatSeekProgressControlComponent as ɵm, MatVideoSourceDirective as ɵn, MatVideoTrackDirective as ɵo, MatFrameByFrameControlComponent as ɵp };
 //# sourceMappingURL=mat-video.js.map
