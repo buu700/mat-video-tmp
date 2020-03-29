@@ -6,7 +6,6 @@ export declare class MatVideoComponent implements AfterViewInit, OnChanges, OnDe
     private evt;
     private player;
     private video;
-    private volumeControl;
     src: string | MediaStream | MediaSource | Blob;
     title: string;
     autoplay: boolean;
